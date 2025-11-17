@@ -5,10 +5,7 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-load_dotenv()
-#enviroment variables call
-os.environ['GROQ_API_KEY'] = os.getenv('GROQ_API_KEY')
-
+os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 
 # creating chatbot
 prompt = ChatPromptTemplate.from_messages([
@@ -27,4 +24,5 @@ output_parser = StrOutputParser()
 # chain
 chain = prompt | llm | output_parser
 if input_text:
+
     st.write(chain.invoke({"question": input_text}))
