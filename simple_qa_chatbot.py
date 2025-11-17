@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from langchain-groq import ChatGroq
+from langchain_groq import ChatGroq
 from langchain-core.prompts import ChatPromptTemplate
 from langchain-core.output_parsers import StrOutputParser
 
@@ -25,6 +25,7 @@ chain = prompt | llm | output_parser
 if input_text:
 
     st.write(chain.invoke({"question": input_text}))
+
 
 
 
